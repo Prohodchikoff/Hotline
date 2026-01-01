@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product
+from .models import Product, ProductImages
 
 
 @admin.register(Product)
@@ -9,7 +9,11 @@ class ProductAdmin(admin.ModelAdmin):
         'name',
         'price',
         'origin_country',
-        'image',
         'create_date',
         'stock',
     ]
+
+
+@admin.register(ProductImages)
+class ProductImagesAdmin(admin.ModelAdmin):
+    list_display = ['path', 'product__product_id']
