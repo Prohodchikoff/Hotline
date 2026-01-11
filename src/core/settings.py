@@ -30,8 +30,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'product.apps.ProductConfig',
+    'categories.apps.CategoriesConfig',
     'rest_framework',
     'cities_light',
+    'mptt',
 ]
 
 MIDDLEWARE = [
