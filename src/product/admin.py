@@ -11,6 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
         'origin_country',
         'create_date',
         'stock',
+        'category_id'
     ]
 
 
