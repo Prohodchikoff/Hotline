@@ -4,6 +4,7 @@ from .models import Product, ProductImages
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    search_fields = ['name']
     list_display = [
         'pk',
         'name',
@@ -11,7 +12,7 @@ class ProductAdmin(admin.ModelAdmin):
         'origin_country',
         'create_date',
         'stock',
-        'category_id'
+        'category',
     ]
 
 

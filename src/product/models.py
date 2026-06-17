@@ -27,7 +27,7 @@ class Product(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
     stock = models.IntegerField()
 
-    category_id = TreeForeignKey(
+    category = TreeForeignKey(
         'categories.Categories',
         on_delete=models.PROTECT,
         default=get_default_category,
@@ -38,9 +38,9 @@ class Product(models.Model):
         return f"{self.name}"
 
     def clean(self):
-        if (self.category_id and self.category_id.level != 2 and self.category_id.name != 'Other'):
+        if self.category and self.category.level != 2 and self.category.name != 'Other':
             raise ValidationError(
-                {'category_id': 'Products can only be assigned to level-2 categories.'}
+                {'category': 'Products can only be assigned to level-2 categories.'}
             )
         return super().clean()
 

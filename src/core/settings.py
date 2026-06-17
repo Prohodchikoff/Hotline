@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'product.apps.ProductConfig',
     'categories.apps.CategoriesConfig',
+    'attributes.apps.AttributesConfig',
     'rest_framework',
     'cities_light',
     'mptt',
