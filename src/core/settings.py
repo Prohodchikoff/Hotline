@@ -11,8 +11,8 @@ env = environ.Env(
     DBNAME=(str, 'hotline'),
     DBUSER=(str, 'postgres'),
     DBPASSWORD=(str, 'postgres'),
-    HOST=(str, '127.0.0.1'),
-    PORT=(str, '5432'),
+    DBHOST=(str, '127.0.0.1'),
+    DBPORT=(str, '5432'),
     ALLOWED_HOSTS=(list, ['127.0.0.1', 'localhost']),
 )
 environ.Env.read_env(BASE_DIR.parent / '.env')
@@ -83,8 +83,8 @@ DATABASES = {
         "NAME": env('DBNAME'),
         "USER": env('DBUSER'),
         "PASSWORD": env('DBPASSWORD'),
-        "HOST": env('HOST'),
-        "PORT": env('PORT'),
+        "HOST": env('DBHOST'),
+        "PORT": env('DBPORT'),
     }
 }
 
