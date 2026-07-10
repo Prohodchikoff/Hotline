@@ -6,10 +6,16 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env(
-        DEBUG=(bool, False),
-        SECRET_KEY=(str, 'django-insecure-iz%xj4qh6aks3e$$dy&489*6)hk2^c9_ew4%-%nw*u=*u#qzne1')
-    )
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+    DEBUG=(bool, False),
+    SECRET_KEY=(str, 'django-insecure-iz%xj4qh6aks3e$$dy&489*6)hk2^c9_ew4%-%nw*u=*u#qzne1'),
+    DBNAME=(str, 'hotline'),
+    DBUSER=(str, 'postgres'),
+    DBPASSWORD=(str, 'postgres'),
+    HOST=(str, '127.0.0.1'),
+    PORT=(str, '5432'),
+    ALLOWED_HOSTS=(list, ['127.0.0.1', 'localhost']),
+)
+environ.Env.read_env(BASE_DIR.parent / '.env')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
@@ -17,7 +23,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -73,12 +79,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": 'django.contrib.gis.db.backends.postgis',
+        "ENGINE": 'django.db.backends.postgresql',
         "NAME": env('DBNAME'),
         "USER": env('DBUSER'),
         "PASSWORD": env('DBPASSWORD'),
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "HOST": env('HOST'),
+        "PORT": env('PORT'),
     }
 }
 
