@@ -1,0 +1,21 @@
+[MASTER]
+load-plugins=pylint_django
+django-settings-module=core.settings
+ignore-paths=^src/.+/migrations/
+
+[FORMAT]
+max-line-length=120
+
+[MESSAGES CONTROL]
+disable=
+    missing-docstring,
+    too-few-public-methods,
+    too-many-ancestors,
+    invalid-str-returned,
+    no-member,
+    duplicate-code,
+    unused-import,
+    import-outside-toplevel,
+    wrong-import-order,
+    consider-using-f-string,
+    invalid-name
