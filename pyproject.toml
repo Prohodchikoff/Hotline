@@ -1,0 +1,14 @@
+[tool.black]
+
+line-length = 120
+check = true
+skip-string-normalization = true
+extend-exclude = '''
+(
+    /migrations/
+)
+'''
+
+[tool.isort]
+profile = "black"
+extend_skip_glob = ["*/migrations/*"]
