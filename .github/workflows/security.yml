@@ -35,5 +35,7 @@ jobs:
         run: bandit -r .
       
       - name: Run Safety check
-        run: safety scan --key ${{ secrets.SAFETY_API_KEY }}
+        env:
+          SAFETY_API_KEY: ${{ secrets.SAFETY_API_KEY }}
+        run: safety --stage cicd scan
     
