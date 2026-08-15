@@ -1,0 +1,37 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+      - id: check-added-large-files
+      # - id: end-of-file-fixer
+      # - id: trailing-whitespace
+
+  - repo: https://github.com/psf/black
+    rev: 26.5.1
+    hooks:
+      - id: black
+        files: ^src/.*\.py$
+        exclude: ^src/.*/migrations/.*\.py$
+        args: ["--check", "--config=pyproject.toml"]
+
+  - repo: https://github.com/pycqa/isort
+    rev: 8.0.1
+    hooks:
+      - id: isort
+        files: ^src/.*\.py$
+        exclude: ^src/.*/migrations/.*\.py$
+        args:
+          - --check-only
+          - --settings-path=pyproject.toml
+
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        args:
+          - --rcfile=.pylintrc
+        files: ^src/.*\.py$
+        language: system
+        types: [python]
