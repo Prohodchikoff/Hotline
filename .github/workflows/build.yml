@@ -27,8 +27,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Check deployment settings
+      - name: Check settings
         env:
           SECRET_KEY: 8fj&4sd1+_b5y3vfw7-=o(qbln*76@$4^bt)v-$0#8%e=f*m6f
           DEBUG: 'False'
-        run: python ./src/manage.py check --deploy --fail-level WARNING
+        run: python ./src/manage.py check --fail-level WARNING

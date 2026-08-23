@@ -1,6 +1,6 @@
-from django.db import models
 from django.apps import apps
 from django.core.exceptions import ValidationError
+from django.db import models
 from mptt.models import TreeForeignKey
 
 
@@ -39,17 +39,13 @@ class Product(models.Model):
 
     def clean(self):
         if self.category and self.category.level != 2 and self.category.name != 'Other':
-            raise ValidationError(
-                {'category': 'Products can only be assigned to level-2 categories.'}
-            )
+            raise ValidationError({'category': 'Products can only be assigned to level-2 categories.'})
         return super().clean()
 
 
 class ProductImages(models.Model):
     path = models.ImageField(upload_to=product_image_path)
-    product = models.ForeignKey(
-        Product, on_delete=models.CASCADE, related_name='images'
-    )
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
 
     class Meta:
         db_table = 'product_images'
