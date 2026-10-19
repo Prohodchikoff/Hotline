@@ -21,7 +21,7 @@ django-environ==0.12.0
 django-js-asset==3.1.2
 django-model-utils==5.0.0
 django-mptt==0.18.0
-djangorestframework==3.16.0
+djangorestframework==3.18.3
 dparse==0.6.4
 filelock==3.32.2
 h11==0.16.0

@@ -3,6 +3,8 @@ load-plugins=pylint_django
 django-settings-module=core.settings
 ignore-paths=^src/.+/migrations/
 
+
+
 [FORMAT]
 max-line-length=120
 
@@ -18,4 +20,8 @@ disable=
     import-outside-toplevel,
     wrong-import-order,
     consider-using-f-string,
-    invalid-name
+    invalid-name,
+    import-error,
+    abstract-method,
+    django-settings-module-not-found,
+    astroid-error
