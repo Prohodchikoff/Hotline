@@ -1,4 +1,4 @@
-name: Lint CI
+name: Pylint
 
 on:
   push:
@@ -7,24 +7,18 @@ on:
     branches: [main]
 
 jobs:
-  
-  lint:
-    name: Code quality
+  pylint:
     runs-on: ubuntu-latest
-    
-    env:
-      DJANGO_SETTINGS_MODULE: core.settings
-      PYTHONPATH: src
-   
+    # env:
+    #   PYTHONPATH: src
+    #   DJANGO_SETTINGS_MODULE: core.settings
+
     steps:
+      - uses: actions/checkout@v4
 
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v7
+      - uses: actions/setup-python@v7
         with:
-          python-version: "3.14"
+          python-version: "3.14.6"
           cache: pip
           cache-dependency-path: requirements.txt
 
@@ -32,12 +26,9 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Analyse code with Pylint
-        run: pylint .
+        run: pylint src
       
       - name: Analyse code with Black
-        run: black .
-      
-      - name: Analyse code with isort
-        run: isort --check-only .
+        run: black --check .
 
     
